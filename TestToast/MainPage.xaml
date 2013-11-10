@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="TestToast.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestToast"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontSize="16">
+
+    <Page.Resources>
+        <local:ToastContentTemplateSelector x:Key="toastContentTemplateSelector" />
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Template" VerticalAlignment="Center" />
+
+            <ComboBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Name="cmbTemplate" DisplayMemberPath="TemplateType" />
+
+            <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                            Content="{Binding SelectedItem, ElementName=cmbTemplate}"
+                            ContentTemplateSelector="{StaticResource toastContentTemplateSelector}" />
+
+            <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="Show toast" Click="btnShowToast_Click" />
+
+        </Grid>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Sample Toast (strongly typed)" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="SampleToastStronglyTypedClick"/>
+            <Button Content="Sample Toast (ToastContent)" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="SampleToastToastContentClick"/>
+        </StackPanel>
+    </Grid>
+</Page>

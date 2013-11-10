@@ -1,0 +1,200 @@
+﻿<Application
+    x:Class="TestToast.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestToast">
+    
+    <Application.Resources>
+
+        <local:StringCollection x:Key="imageList">
+            <x:String>ms-appx:///Images/win8.png</x:String>
+            <x:String>ms-appx:///Images/dotnet.png</x:String>
+            <x:String>ms-appx:///Images/pintsize.png</x:String>
+        </local:StringCollection>
+
+        <DataTemplate x:Key="imageItemTemplate">
+            <Image Source="{Binding}" Width="64" Height="64"/>
+        </DataTemplate>
+        
+        <Style x:Key="templateFieldStyle" TargetType="FrameworkElement">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="templateFieldHeaderStyle" TargetType="FrameworkElement">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="imageComboFieldStyle" TargetType="ComboBox" BasedOn="{StaticResource templateFieldStyle}">
+            <Setter Property="Width" Value="110" />
+            <Setter Property="Height" Value="70" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="ItemsSource" Value="{StaticResource imageList}" />
+            <Setter Property="ItemTemplate" Value="{StaticResource imageItemTemplate}" />
+        </Style>
+
+        <DataTemplate x:Key="ToastText01">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Text" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ToastText02">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Text" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ToastText03">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Text" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ToastText04">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Text1" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Text2" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text1, Mode=TwoWay}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text2, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ToastImageAndText01">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Text" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Image" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text, Mode=TwoWay}" />
+                <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource imageComboFieldStyle}" SelectedItem="{Binding Image, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ToastImageAndText02">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Text" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Image" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text, Mode=TwoWay}" />
+                <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource imageComboFieldStyle}" SelectedItem="{Binding Image, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="ToastImageAndText03">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Text" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Image" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text, Mode=TwoWay}" />
+                <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource imageComboFieldStyle}" SelectedItem="{Binding Image, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="ToastImageAndText04">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Text1" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Text2" Style="{StaticResource templateFieldHeaderStyle}" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Image" Style="{StaticResource templateFieldHeaderStyle}" />
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text1, Mode=TwoWay}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource templateFieldStyle}" Text="{Binding Text2, Mode=TwoWay}" />
+                <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource imageComboFieldStyle}" SelectedItem="{Binding Image, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+    </Application.Resources>
+    
+</Application>

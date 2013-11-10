@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toasts>
+  <toast>
+    <visual>
+      <binding template="ToastImageAndText01" description="An image and a single string wrapped across a maximum of three lines of text.">
+        <image id="1" src="" name="Image" />
+        <text id="1" name="Text"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastImageAndText02" description="An image, one string of bold text on the first line (Title), one string of regular text wrapped across the second and third lines (Text).">
+        <image id="1" src="" name="Image" />
+        <text id="1" name="Title"></text>
+        <text id="2" name="Text"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastImageAndText03" description="An image, one string of bold text wrapped across the first two lines (Title), one string of regular text on the third line (Text).">
+        <image id="1" src="" name="Image" />
+        <text id="1" name="Title"></text>
+        <text id="2" name="Text"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastImageAndText04" description="An image, one string of bold text on the first line (Title), one string of regular text on the second line (Text1), one string of regular text on the third line (Text2).">
+        <image id="1" src="" name="Image" />
+        <text id="1" name="Title"></text>
+        <text id="2" name="Text1"></text>
+        <text id="3" name="Text2"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastText01" description="A single string wrapped across a maximum of three lines of text.">
+        <text id="1" name="Text"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastText02" description="One string of bold text on the first line (Title), one string of regular text wrapped across the second and third lines (Text).">
+        <text id="1" name="Title"></text>
+        <text id="2" name="Text"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastText03" description="One string of bold text wrapped across the first and second lines (Title), one string of regular text on the third line (Text).">
+        <text id="1" name="Title"></text>
+        <text id="2" name="Text"></text>
+      </binding>
+    </visual>
+  </toast>
+  <toast>
+    <visual>
+      <binding template="ToastText04" description="One string of bold text on the first line (Title), one string of regular text on the second line (Text1), one string of regular text on the third line (Text2).">
+        <text id="1" name="Title"></text>
+        <text id="2" name="Text1"></text>
+        <text id="3" name="Text2"></text>
+      </binding>
+    </visual>
+  </toast>
+</toasts>

@@ -1,0 +1,75 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#"  #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Globalization" #>
+<#@ output extension=".cs" #>
+using Windows.UI.Notifications;
+
+namespace ToastHelper
+{
+    public partial class ToastContent
+    {
+<#
+    string dir = Path.GetDirectoryName(Host.TemplateFile);
+    string toastsFile = Path.Combine(dir, "toasts.xml");
+    var doc = XDocument.Load(toastsFile);
+    foreach (var toastRoot in doc.Root.Elements("toast"))
+    {
+		var binding = toastRoot.Descendants("binding").First();
+        var elements =
+            from e in binding.Descendants()
+            let idAttr = e.Attribute("id")
+            where idAttr != null
+            select new
+            {
+                Type = e.Name.LocalName,
+                Id = idAttr.Value,
+                Name = e.Attribute("name").Value
+            };
+
+        string templateName = binding.Attribute("template").Value;
+        string className = templateName.Substring("Toast".Length);
+        string description = binding.Attribute("description").Value;
+#>
+        /// <summary>
+        /// <#=  description #>
+        /// </summary>
+        public class <#= className #> : ToastContent
+        {
+            public <#= className #>() : base(ToastTemplateType.<#= templateName #>)
+            {
+            }
+<#
+        foreach (var element in elements)
+        {
+            string elementType = Capitalize(element.Type);
+            //string propertyName = elementType + element.Id;
+            string propertyName = element.Name;
+            string xpath = string.Format("//{0}[@id={1}]", element.Type, element.Id);
+#>
+            public string <#= propertyName #>
+            {
+                get { return Get<#= elementType #>(<#= element.Id #>); }
+                set { Set<#= elementType #>(<#= element.Id #>, value); }
+            }
+<#
+        }
+#>
+        }
+<#
+    }
+#>
+    }
+}
+<#+ 
+static string Capitalize(string s)
+{
+    return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(s);
+}
+ #>
