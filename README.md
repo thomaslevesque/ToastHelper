@@ -5,7 +5,7 @@ A strongly typed helper for toast notifications in Windows Store apps
 
 It can be used like this:
 
-```
+```csharp
 var content = new ToastContent.ImageAndText02
 {
     Image = "ms-appx:///Images/dotnet.png",
@@ -18,7 +18,7 @@ notifier.Show(content.CreateNotification());
 
 Or, if you don't need strong typing but don't want to manipulate the XML directly, you can do this:
 
-```
+```csharp
 var content = new ToastContent(ToastTemplateType.ToastImageAndText02);
 content.SetImage(1, "ms-appx:///Images/dotnet.png");
 content.SetText(1, "Hello world!");
